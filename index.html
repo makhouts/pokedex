@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pokedéx</title>
+</head>
+<body>
+    <div class="container">
+        <div class="pokemon-information">
+            <img id="image" src="" alt="pokemon">
+            <h1 id="pokemon-name"></h1>
+            <span id="pokemonId"></span>
+            <div class="moves">
+                <p id="move1"></p>
+                <p id="move2"></p>
+                <p id="move3"></p>
+                <p id="move4"></p>
+            </div>
+        </div>
+        <div>
+        <button id="previous">Previous</button>
+        <button id="next">Next</button>
+        </div>
+        <div>
+            <input id="searchValue" type="text">
+            <button id="searchBtn">Search</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+body {
+    background: url(./assets/bg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(241, 241, 241);
+    height: 100%;
+}
+
+.pokemon-information {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.pokemon-information img {
+    width: 300px;
+}
