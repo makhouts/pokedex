@@ -8,11 +8,13 @@ const fetchPokemons = (pokemonId) => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
     .then(data => {
         pokemon = data.data;
-        console.log(pokemon);
         image.src = pokemon.sprites.front_default
         pokemonDisplayId.textContent = pokemon.id;
         pokemonName.textContent = pokemon.name;
-        const moves = pokemon.moves.slice(0,4);
+        let moves = pokemon.moves.slice(0,4);
+        for (let index = 0; index < 4; index++) {
+            document.querySelector(`#move${index + 1}`).textContent = '';
+        }
         moves.map((move, i) => {
             document.querySelector(`#move${i + 1}`).textContent = move.move.name;
         })
@@ -48,6 +50,15 @@ document.querySelector('#searchBtn').addEventListener('click', () => {
     searchValue == '' ? searchValue = '1' : null;
     pokemonId = searchValue;
     fetchPokemons(pokemonId);
+});
+
+document.querySelector('#searchValue').addEventListener('keyup', (event) => {
+    if (event.keyCode === 13) {
+        let searchValue = document.querySelector('#searchValue').value;
+        searchValue == '' ? searchValue = '1' : null;
+        pokemonId = searchValue;
+        fetchPokemons(pokemonId); 
+    };
 });
 
 
