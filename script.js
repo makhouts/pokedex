@@ -1,5 +1,6 @@
 let pokemonId = 1;
 let pokemon;
+
 const image = document.querySelector('#image');
 const pokemonName = document.querySelector('#pokemon-name');
 const pokemonDisplayId = document.querySelector('#pokemonId');
@@ -25,9 +26,22 @@ const fetchPokemons = (pokemonId) => {
 
 const fetchEvolutions = () => {
     axios.get(pokemon.species.url)
-    .then(data => {
-        axios.get(data.data.evolution_chain.url)
-        .then(data => console.log(data.data.chain.evolves_to[0]));
+    .then(speciesdata => {
+        axios.get(speciesdata.data.evolution_chain.url)
+        .then(data => {
+            if(data.data.chain.evolves_to[0].evolves_to[0] !== undefined) { 
+            const evolvesTo = data.data.chain.evolves_to[0].evolves_to[0].species.name;
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${evolvesTo}`)
+                .then(data => {
+                    const imgSrc =  document.querySelector('#evolutionImg');
+                    imgSrc.src = data.data.sprites.front_default;
+
+                    imgSrc.addEventListener('click', () => fetchPokemons(data.data.name))
+
+                })
+            };
+            document.querySelector('#evolutionImg').src = '';
+        });
     });
 };
 
