@@ -9,16 +9,14 @@ html {
     background-size: cover;
     color: rgb(241, 241, 241);
     height: 100%;
-    font-family: 'pokemonFont'
+    font-family: 'pokemonFont';
 }
 
-body {
-    background: url(./assets/pokedex.png);
-    background-repeat: no-repeat;
-    background-size: 800px;
-    background-position-x: center;
-    background-position-y: center;
-    height: 100%;
+.pokedex {
+    position: absolute;
+    left: 680px;
+    top: 200px;
+    transform: scale(1.5);
 }
 
 .pokemon-information img {
@@ -27,54 +25,54 @@ body {
 
 #image {
     position: absolute;
-    left: 635px;
-    top: 32vh;
+    left: 645px;
+    top: 240px;
 }
 
 #pokemon-name {
     position: absolute;
-    top: 37.5vh;
-    left: 107.5vh;
+    top: 280px;
+    left: 1040px;
     color: darkgreen;
     font-size: 23px;
 }
 
 #pokemonId {
     position: absolute;
-    left: 70.4vh;
-    top: 62.3vh;
+    left: 645px;
+    top: 530px;
 }
 
 .moves {
     position: absolute;
-    left: 106vh;
-    top: 42vh;
+    left: 1020px;
+    top: 320px;
     color: darkgreen;
     padding: 20px;
 }
 
 #previous {
     position: absolute;
-    left: 111.2vh;
-    top: 66.4vh;
+    left: 1075px;
+    top: 572px;
     width: 33px;
-    height: 25px;
+    height: 27px;
     opacity: 0;
 }
 
 #next {
     position: absolute;
-    left: 115vh;
-    top: 66.4vh;
+    left: 1110px;
+    top: 570px;
     width: 33px;
-    height: 25px;
+    height: 27px;
     opacity: 0;
 }
 
 #searchValue{
     position: absolute;
-    left: 70.4vh;
-    top: 68vh;
+    left: 660px;
+    top: 590px;
     width: 150px;
     height: 60px;
     background-color: red;
@@ -82,8 +80,8 @@ body {
 }
 #searchBtn{
     position: absolute;
-    left: 87.4vh;
-    top: 72.6vh;
+    left: 820px;
+    top: 635px;
     background-color: red;
     text-align: center;
 }
