@@ -29,21 +29,57 @@ const fetchEvolutions = () => {
     .then(speciesdata => {
         axios.get(speciesdata.data.evolution_chain.url)
         .then(data => {
+            if(data.data.chain !== undefined) { 
+                const evolvesTo = data.data.chain.species.name;
+                    axios.get(`https://pokeapi.co/api/v2/pokemon/${evolvesTo}`)
+                    .then(result => {
+                        const createImg = document.createElement('img');
+                        createImg.src =  result.data.sprites.front_default;
+                        createImg.classList.add('evo1');
+                        const imgDiv = document.querySelector('#evolutionImg').appendChild(createImg);
+                        createImg.addEventListener('click', () => {
+                            fetchPokemons(result.data.name);
+                            document.querySelector('#searchValue').value = '';
+                        });
+                    })
+            };
+            document.querySelector('#evolutionImg').innerHTML = '';
+
+            if(data.data.chain.evolves_to[0] !== undefined) { 
+                const evolvesTo = data.data.chain.evolves_to[0].species.name;
+                    axios.get(`https://pokeapi.co/api/v2/pokemon/${evolvesTo}`)
+                    .then(result => {
+                        const createImg = document.createElement('img');
+                        createImg.src =  result.data.sprites.front_default;
+                        createImg.classList.add('evo2');
+                        const imgDiv = document.querySelector('#evolutionImg').appendChild(createImg);
+                        createImg.addEventListener('click', () => {
+                            fetchPokemons(result.data.name);
+                            document.querySelector('#searchValue').value = '';
+                        });
+                    })
+            };
+            document.querySelector('#evolutionImg').innerHTML = '';
+            
             if(data.data.chain.evolves_to[0].evolves_to[0] !== undefined) { 
             const evolvesTo = data.data.chain.evolves_to[0].evolves_to[0].species.name;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${evolvesTo}`)
-                .then(data => {
-                    const imgSrc =  document.querySelector('#evolutionImg');
-                    imgSrc.src = data.data.sprites.front_default;
-
-                    imgSrc.addEventListener('click', () => fetchPokemons(data.data.name))
-
+                .then(result => {
+                    const createImg = document.createElement('img');
+                    createImg.src =  result.data.sprites.front_default;
+                    createImg.classList.add('evo3');
+                    const imgDiv = document.querySelector('#evolutionImg').appendChild(createImg);
+                    createImg.addEventListener('click', () => {
+                        fetchPokemons(result.data.name);
+                        document.querySelector('#searchValue').value = '';
+                    });
                 })
             };
-            document.querySelector('#evolutionImg').src = '';
+            document.querySelector('#evolutionImg').innerHTML = '';
         });
     });
 };
+
 
 fetchPokemons(pokemonId);
 

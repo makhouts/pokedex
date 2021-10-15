@@ -77,6 +77,8 @@ html {
     height: 60px;
     background-color: red;
     text-align: center;
+    font-size: 10px;
+    font-family: pokemonFont;
 }
 #searchBtn{
     position: absolute;
@@ -84,4 +86,25 @@ html {
     top: 635px;
     background-color: red;
     text-align: center;
+}
+
+#evolutionImg {
+    position: absolute;
+    top: 680px;
+    left: 1030px;
+}
+
+#evolutionImg img {
+    width: 200px;
+    cursor: pointer;
+}
+
+.evo1 {
+    order: 1;
+}
+.evo2 {
+    order: 2;
+}
+.evo3 {
+    order: 3;
 }
